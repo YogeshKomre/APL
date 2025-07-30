@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altice Premier League Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="upload-section">
+        <label for="csvFileInput">Upload CSV File:</label>
+        <input type="file" id="csvFileInput" accept=".csv">
+    </div>
+    
+    <div class="download-section">
+        <h3>Download</h3>
+        <button id="downloadLeadersBtn" class="download-btn">
+            <span class="btn-icon">📊</span> Leaders
+        </button>
+        <button id="downloadTableBtn" class="download-btn">
+            <span class="btn-icon">📋</span> Employee Table
+        </button>
+    </div>
+</div>
+<div class="dashboard-content">
+<h1>Altice Premier League (APL)</h1>
+<div class="top-performers">
+<h2>Top Performers</h2>
+<div id="topPerformersList" class="rank-grid">
+<p style="grid-column: 1 / -1; color: gray;">Upload a CSV file to see top performers.</p>
+</div>
+</div>
+<div class="runner-ups">
+    <h2>Runner Ups</h2>
+    <div id="runnerUpsList" class="runner-ups-grid">
+        <!-- 4th and 5th place will be inserted here -->
+    </div>
+</div>
+
+<div class="other-employees">
+    <h2>Other Employees</h2>
+    <div id="otherEmployeesList" class="other-employees-grid">
+        <p style="grid-column: 1 / -1; color: gray;">Other employee data will appear here.</p>
+</div>
+</div>
+</div>
+
+<!-- Add html2canvas library -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<!-- Load scripts in order -->
+<script src="script.js"></script>
+<script src="download-script.js"></script>
+<!-- Cursor Effect Script -->
+<script src="cursor-effect.js"></script>
+<script>
+    // Simple check to see if scripts are loaded
+    window.addEventListener('load', function() {
+        console.log('Page fully loaded');
+        console.log('html2canvas available:', typeof html2canvas !== 'undefined');
+        console.log('setupDownloadButtons available:', typeof setupDownloadButtons !== 'undefined');
+        
+        // Try to initialize download buttons if not already done
+        if (typeof setupDownloadButtons === 'function') {
+            console.log('Initializing download buttons...');
+            setupDownloadButtons();
+        } else {
+            console.warn('setupDownloadButtons function not found');
+        }
+    });
+</script>
+</body>
+</html>

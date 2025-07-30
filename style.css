@@ -1,0 +1,708 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: navy; /* Navy blue background */
+    color: orange; /* Orange text color */
+    overflow-x: hidden; /* Prevent horizontal scroll for cursor effect */
+    cursor: none; /* Hide default cursor */
+    display: flex; /* Use flexbox for layout */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Custom Cursor Styles */
+.cursor {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: #ffa500;
+}
+
+.cursor-trail {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+/* Make sure interactive elements have the right cursor */
+a, button, .employee-card, input, select, textarea {
+    cursor: none;
+}
+
+/* Download Buttons */
+.download-section h3 {
+    color: orange;
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    margin: 5px 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:active {
+    transform: translateY(1px);
+}
+
+.btn-icon {
+    font-size: 14px;
+}
+
+.download-btn.rank-1 {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.9));
+    transform: scale(1.1);
+    z-index: 4;
+    margin: 0 40px;
+    backdrop-filter: blur(5px);
+}
+
+/* Employee Table Styles */
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: rgba(0, 0, 128, 0.8); /* Semi-transparent navy */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.employee-table th {
+    background-color: #000080; /* Darker navy for header */
+    color: #ffa500; /* Orange text */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.employee-table tbody tr:hover {
+    background-color: rgba(0, 0, 128, 0.6);
+}
+
+.employee-table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 128, 0.5);
+}
+
+.employee-table tbody tr:hover td {
+    color: #ffd700; /* Gold color on hover */
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .employee-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+.navbar {
+    width: 200px; /* Width of the navigation bar */
+    background-color: rgba(0, 0, 80, 0.8); /* Slightly darker navy for navbar */
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+}
+
+.navbar .upload-section,
+.navbar .download-section {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid orange;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.navbar .upload-section label {
+    display: block; /* Make label take full width */
+    margin-bottom: 10px; /* Space between label and input */
+    font-size: 1.1em;
+}
+
+.navbar .upload-section input[type="file"] {
+    background-color: #333;
+    color: orange;
+    border: 1px solid orange;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Make file input fill the available width */
+    box-sizing: border-box;
+}
+
+.dashboard-content {
+    flex-grow: 1; /* Allow content to take remaining space */
+    width: 100%;
+    max-width: 1400px; /* Increased max-width */
+    margin: 40px auto; /* Center content horizontally */
+    padding: 20px;
+    background-color: rgba(0, 0, 80, 0.7); /* Slightly darker navy for content container */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: orange;
+    margin-bottom: 20px;
+    text-align: center; /* Ensure main heading is centered */
+}
+
+h2 {
+    color: orange;
+    margin-bottom: 20px;
+}
+
+.top-performers {
+    margin: 40px auto 0;
+    padding: 40px 0 20px; /* Added more top padding */
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    background: 
+        linear-gradient(rgba(0, 0, 80, 0.8), rgba(0, 0, 80, 0.8)),
+        url('https://i.ibb.co/8MqWcX3/IMG-20240730-112828-1.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.runner-ups {
+    margin: 20px auto 0;
+    padding: 20px 0;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 10; /* Ensure heading stays above cards */
+}
+
+.top-performers h2 {
+    position: relative;
+    z-index: 20; /* Higher z-index to stay above everything */
+    background: rgba(0, 0, 80, 0.9); /* Match the background */
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.runner-ups h2 {
+    text-align: center;
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.runner-ups-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px auto 0;
+    max-width: 1000px;
+}
+
+.runner-up-card {
+    background: rgba(255, 165, 0, 0.1);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.runner-up-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-color: orange;
+}
+
+.other-employees {
+    margin: 40px auto 0;
+    padding: 20px 0;
+    border-top: 2px solid orange;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.rank-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    box-sizing: border-box;
+}
+
+.top-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    gap: 0;
+    position: relative;
+    max-width: 900px;
+}
+
+.divider {
+    width: 90%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, orange, transparent);
+    margin: 30px auto;
+    border: none;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+/* Card base styles */
+.rank-1, .rank-2, .rank-3, .rank-4, .rank-5 {
+    transition: all 0.3s ease;
+    flex: 0 0 auto;
+    width: 280px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+}
+
+/* First place - Gold (Center) */
+.rank-1 {
+    transform: scale(1.15);
+    z-index: 1; /* Lower z-index to stay behind heading */
+    margin: 0 -100px 0 -100px;
+    position: relative;
+    top: 20px; /* Adjusted to not overlap heading */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.9));
+    border: 2px solid #FFD700;
+    min-height: 380px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #000;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+    order: 2; /* Ensure it's in the middle */
+    backdrop-filter: blur(5px);
+}
+
+.position-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    border: 2px solid rgba(255,255,255,0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.rank-1 .position-badge {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid #FFD700;
+    color: #000;
+}
+
+/* Second place - Silver (Left) */
+.rank-2 {
+    transform: scale(1);
+    z-index: 2;
+    margin-right: -80px;
+    margin-left: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.9), rgba(192, 192, 192, 0.9));
+    border: 2px solid #a0a0a0;
+    min-height: 340px;
+    min-width: 250px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+    color: #000 !important; /* Force all text to black */
+    text-shadow: 0 1px 3px rgba(255,255,255,0.9) !important;
+    order: 1; /* Ensure it's on the left */
+    backdrop-filter: blur(5px);
+}
+
+/* Ensure all text in 2nd place card is visible */
+.rank-2,
+.rank-2 *,
+.rank-2 .employee-name,
+.rank-2 .employee-score,
+.rank-2 .employee-details,
+.rank-2 p,
+.rank-2 div,
+.rank-2 span,
+.rank-2 .employee-card h3,  /* Target the name specifically */
+.rank-2 h3 {
+    color: #000 !important; /* Force all text to black */
+    font-weight: 600; /* Slightly bolder text */
+    text-shadow: 0 1px 3px rgba(255,255,255,0.9) !important;
+}
+
+/* Specific style for score to make it stand out more */
+.rank-2 .employee-score {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.rank-2 .position-badge {
+    background: rgba(0,0,0,0.1);
+    border: 2px solid #333;
+    color: #333;
+}
+
+/* Force all text in 2nd place card to be black */
+.rank-2,
+.rank-2 * {
+    color: #000 !important;
+}
+
+/* Specific override for any white text */
+.rank-2 h3,
+.rank-2 .employee-name,
+.rank-2 [style*='color: white'],
+.rank-2 [style*='color: #fff'],
+.rank-2 [style*='color:#fff'] {
+    color: #000 !important;
+}
+
+/* Third place - Bronze (Right) */
+.rank-3 {
+    transform: scale(1);
+    z-index: 2;
+    margin-left: -80px;
+    margin-right: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.9), rgba(139, 69, 19, 0.9));
+    border: 2px solid #CD7F32;
+    min-height: 320px;
+    min-width: 250px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    order: 3; /* Ensure it's on the right */
+}
+
+.rank-3 .position-badge {
+    background: rgba(0,0,0,0.2);
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+/* Fourth and fifth places */
+.rank-4, .rank-5 {
+    transform: scale(0.9);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.rank-4:hover, .rank-5:hover {
+    transform: scale(0.95);
+    opacity: 1;
+}
+
+.employee-card {
+    background-color: rgba(0, 0, 80, 0.9); /* Dark blue background */
+    border: 1px solid orange;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.employee-card:hover {
+    transform: translateY(-5px);
+}
+
+.employee-card h3 {
+    margin-top: 0;
+    color: white; /* Name can be white for better contrast */
+}
+
+.employee-card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* Specific colors for ranks */
+/* Position-specific styles */
+.position-1 { 
+    background-color: rgba(255, 215, 0, 0.3);
+    border: 2px solid gold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.position-2 { 
+    background-color: rgba(192, 192, 192, 0.3);
+    border: 2px solid silver;
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.4);
+}
+
+.position-3 { 
+    background-color: rgba(205, 127, 50, 0.3);
+    border: 2px solid #cd7f32;
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.4);
+}
+
+.position-4 { 
+    background-color: rgba(0, 191, 255, 0.3);
+    border: 1px solid #00bfff;
+}
+
+.position-5 { 
+    background-color: rgba(255, 140, 0, 0.3);
+    border: 1px solid #ff8c00;
+}
+.other-employees-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.other-employee-item {
+    background-color: rgba(255, 165, 0, 0.1);
+    border: 1px dashed orange;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack navbar and content on smaller screens */
+    }
+    .navbar {
+        width: 100%;
+        height: auto;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        flex-direction: row; /* Layout items horizontally in navbar */
+        justify-content: center; /* Center content in horizontal navbar */
+    }
+    .navbar .upload-section {
+        margin: 0; /* Remove top margin */
+        width: auto; /* Allow content to size naturally */
+        display: flex; /* Use flex to align label and input */
+        align-items: center;
+    }
+    .navbar .upload-section label {
+        margin-bottom: 0;
+        margin-right: 10px; /* Space between label and input */
+    }
+    .navbar .upload-section input[type="file"] {
+        width: auto; /* Auto width for file input */
+    }
+    .dashboard-content {
+        max-width: 100%; /* Full width on small screens */
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
+.navbar .upload-section {
+
+    margin-top: 30px; /* Space from the top of the navbar */
+           padding: 15px;
+           border: 1px solid orange;
+           border-radius: 8px;
+           text-align: center;
+           width: 90%; /* Adjust width within navbar */
+           box-sizing: border-box; /* Include padding in width */
+       }
+       .navbar .upload-section label {
+           display: block; /* Make label take full width */
+           margin-bottom: 10px; /* Space between label and input */
+           font-size: 1.1em;
+       }
+       .navbar .upload-section input[type="file"] {
+           background-color: #333;
+           color: orange;
+           border: 1px solid orange;
+           padding: 8px;
+           border-radius: 5px;
+           cursor: pointer;
+           width: 100%; /* Make file input fill the available width */
+           box-sizing: border-box;
+       }
+       .dashboard-content {
+           flex-grow: 1; /* Allow content to take remaining space */
+           max-width: calc(100% - 220px); /* Adjust max-width considering navbar */
+           margin: 40px auto; /* Center content horizontally */
+           padding: 20px;
+           background-color: rgba(0, 0, 80, 0.7); /* Slightly darker navy for content container */
+           border-radius: 10px;
+           box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+           text-align: center;
+       }
+       h1 {
+           color: orange;
+           margin-bottom: 20px;
+           text-align: center; /* Ensure main heading is centered */
+       }
+       h2 {
+           color: orange;
+           margin-bottom: 20px;
+       }
+       .top-performers, .other-employees {
+           margin-top: 40px;
+           padding: 20px 0;
+           border-top: 2px solid orange;
+       }
+       .rank-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+           gap: 20px;
+           justify-content: center;
+           margin-top: 20px;
+       }
+       .employee-card {
+           background-color: rgba(255, 165, 0, 0.2); /* Semi-transparent orange fallback */
+           border: 1px solid orange;
+           border-radius: 8px;
+           padding: 15px;
+           text-align: center;
+           box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+           transition: transform 0.2s ease-in-out;
+       }
+       .employee-card:hover {
+           transform: translateY(-5px);
+       }
+       .employee-card h3 {
+           margin-top: 0;
+           color: white; /* Name can be white for better contrast */
+       }
+       .employee-card p {
+           margin: 5px 0;
+           font-size: 0.9em;
+       }
+       /* Specific colors for ranks */
+       .position-1 { background-color: rgba(255, 215, 0, 0.3); } /* Golden for 1st Rank */
+       .position-2 { background-color: rgba(0, 255, 0, 0.3); } /* Greenish for Promoters */
+       .position-3-4 { background-color: rgba(0, 191, 255, 0.3); } /* Light blue for Fiber/Mobile Sales */
+       .position-5 { background-color: rgba(255, 140, 0, 0.3); } /* Darker orange for Golden */
+       .other-employees-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+           gap: 15px;
+           margin-top: 20px;
+       }
+       .other-employee-item {
+           background-color: rgba(255, 165, 0, 0.1);
+           border: 1px dashed orange;
+           border-radius: 5px;
+           padding: 10px;
+           font-size: 0.9em;
+           text-align: left;
+       }
+       /* Responsive adjustments */
+       @media (max-width: 768px) {
+           body {
+               flex-direction: column; /* Stack navbar and content on smaller screens */
+           }
+           .navbar {
+               width: 100%;
+               height: auto;
+               padding: 15px 0;
+               box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+               flex-direction: row; /* Layout items horizontally in navbar */
+               justify-content: center; /* Center content in horizontal navbar */
+           }
+           .navbar .upload-section {
+               margin: 0; /* Remove top margin */
+               width: auto; /* Allow content to size naturally */
+               display: flex; /* Use flex to align label and input */
+               align-items: center;
+           }
+           .navbar .upload-section label {
+               margin-bottom: 0;
+               margin-right: 10px; /* Space between label and input */
+           }
+           .navbar .upload-section input[type="file"] {
+               width: auto; /* Auto width for file input */
+           }
+           .dashboard-content {
+               max-width: 100%; /* Full width on small screens */
+               margin: 20px auto;
+               padding: 15px;
+           }
+       }
