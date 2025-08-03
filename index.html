@@ -21,6 +21,15 @@
         <button id="downloadTableBtn" class="download-btn">
             <span class="btn-icon">📋</span> Employee Table
         </button>
+        <div class="email-section" style="margin-top: 10px;">
+            <input type="email" id="emailInput" placeholder="Enter email address" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-right: 5px; width: 200px;">
+            <button id="emailLeadersBtn" class="download-btn" style="margin-top: 5px;">
+                <span class="btn-icon">✉️</span> Email Leaders
+            </button>
+            <button id="emailTableBtn" class="download-btn" style="margin-top: 5px;">
+                <span class="btn-icon">📧</span> Email Table
+            </button>
+        </div>
     </div>
 </div>
 <div class="dashboard-content">
@@ -48,6 +57,14 @@
 
 <!-- Add html2canvas library -->
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<!-- Add EmailJS library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS with your public key
+    (function() {
+        emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    })();
+</script>
 <!-- Load scripts in order -->
 <script src="script.js"></script>
 <script src="download-script.js"></script>
